@@ -1,7 +1,9 @@
 const express = require('express');
 
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
-const { PORT } = require('./config/serverConfig');
+const { PORT } = require('./config/serverConfig.js');
 
 const setupAndStartServer = async () =>{
     // create the express object
