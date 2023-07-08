@@ -11,10 +11,10 @@ const setupAndStartServer = async () =>{
     const app = express();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}));
-    const PORT = 3000;
+    // const PORT = 3000;
 
     app.listen(PORT, ()=>{
-        console.log(`server stated at ${PORT}`);
+        console.log(`server started at ${PORT}`);
         // console.log(process.env);
     });
 }
