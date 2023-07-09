@@ -1,20 +1,20 @@
-const {CityService} = require('../services/index');
+const { CityService } = require('../services/index');
 
 
 const cityService = new CityService();
 
-const create = async (req, res) =>{
+const create = async (req, res) => {
     try{
         const city = await cityService.createCity(req.body);
         return res.status(201).json({
             data:city,
             success:true,
             message: 'Successfully created a city',
-            err:{}
-        })
+            err: {}
+        });
 
     }catch(error){
-        console.log(error);
+        console.log(error); 
         return res.status(500).json({
             data:{},
             success:false,
@@ -43,7 +43,7 @@ const destroy = async(req, res) =>{
             err:error
         });
     }
-    }
+}
 // GRT -> /city/:id
 
 const get = async(req, res) =>{
