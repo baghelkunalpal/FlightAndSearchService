@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const { PORT } = require('./config/serverConfig.js');
 
 const ApiRoutes = require('./routes/index.js');
+// const {Airports,City} = require('./models/index.js');
 const setupAndStartServer = async () =>{
 
     const app = express();
@@ -17,6 +18,9 @@ const setupAndStartServer = async () =>{
 
     app.listen(PORT,async ()=>{
         console.log(`server started at ${PORT}`); 
+
+        // const airports = await Airports.findAll();
+        // console.log(airports);
     });
 }
 setupAndStartServer();
