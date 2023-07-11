@@ -1,26 +1,28 @@
-const express = require('express');
+const express = require("express");
+const bodyParser = require("body-parser");
 
-require('dotenv').config();
+const { PORT } = require('./config/serverConfig');
+const ApiRoutes = require('./routes/index');
 
-const bodyParser = require('body-parser');
-const { PORT } = require('./config/serverConfig.js');
+const db = require('./models/index');
+// const {Airplane} = require('./models/index');
 
-const ApiRoutes = require('./routes/index.js');
-// const {Airports,City} = require('./models/index.js');
-const setupAndStartServer = async () =>{
+const setupAndStartServer = async () => {
 
+    // create the express object
     const app = express();
-    
+
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended:true}));
+    app.use(bodyParser.urlencoded({extended: true}));
 
-    app.use('/api',ApiRoutes);
+    app.use('/api', ApiRoutes);
 
-    app.listen(PORT,async ()=>{
-        console.log(`server started at ${PORT}`); 
-
-        // const airports = await Airports.findAll();
-        // console.log(airports);
+    app.listen(PORT, async () => {
+        console.log(`Server started at ${PORT}`);
+        if(process.env.SYNC_DB) {
+            db.sequelize.sync({alter: true});
+        }
     });
 }
+
 setupAndStartServer();
