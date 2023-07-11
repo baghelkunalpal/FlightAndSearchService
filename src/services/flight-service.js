@@ -1,11 +1,11 @@
-const {FlightRespository, AirplaneRespository} = require('../repository/index');
+const {FlightRepository, AirplaneRepository} = require('../repository/index');
 const { compareTime } = require('../utils/helper');
 
 class FlightService {
 
     constructor() {
-        this.airplaneRespository = new AirplaneRespository();
-        this.flightrespository = new FlightRespository();
+        this.airplaneRespository = new AirplaneRepository();
+        this.flightrespository = new FlightRepository();
     }
 
     async createFlight(data) {
@@ -52,9 +52,6 @@ class FlightService {
             console.log("Something  wrong in service layer");
             throw {error};
         }
-    }
-    async getAllFlightsData(){
-        
     }
     
 }
